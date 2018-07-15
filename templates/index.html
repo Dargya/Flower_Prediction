@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Flower Identifier</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->
+	<link rel="icon" type="image/png" href="{{ url_for('static',filename='images/icons/car_icon.png') }}" />
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css') }}" >
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/animate/animate.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/css-hamburgers/hamburgers.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/animsition/css/animsition.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/select2/select2.min.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='vendor/daterangepicker/daterangepicker.css') }}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/util.css') }}">
+	<link rel= "stylesheet" type= "text/css" href="{{ url_for('static',filename='css/main.css') }}">
+<!--===============================================================================================-->
+
+</head>
+<body>
+
+
+	<div class="container-contact100">
+		<div class="wrap-contact100">
+			<form id="form_pred" class="contact100-form validate-form" method="post" action="/api">
+				<span class="contact100-form-title">
+					Flower Identifier
+				</span>
+
+				<div class="wrap-input100 validate-input" data-validate="s_length is required">
+					<span class="label-input100">s_length</span>
+					<input class="input100" type="text" id="s_lenth" name="s_lenth" placeholder="0-10">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate="s_width is required">
+					<span class="label-input100">s_width</span>
+					<input class="input100" type="text" id="s_width" name="s_width" placeholder="0-10">
+					<span class="focus-input100"></span>
+				</div>
+
+
+
+				<div class="wrap-input100 validate-input" data-validate="p_length is required">
+					<span class="label-input100">p_length</span>
+					<input class="input100" type="text" id="p_length" name="p_length" placeholder="7">
+					<span class="focus-input100"></span>
+				</div>
+
+
+        <div class="wrap-input100 validate-input" data-validate="p_width is required">
+					<span class="label-input100">p_width</span>
+					<input class="input100" type="text" id="p_width" name="p_width" placeholder="7">
+					<span class="focus-input100"></span>
+				</div>
+
+
+
+				<div class="container-contact100-form-btn">
+					<div class="wrap-contact100-form-btn">
+						<div class="contact100-form-bgbtn"></div>
+						<button id="predict" class="contact100-form-btn">
+							<span>
+								Which flower is it?
+								<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+							</span>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+	<div id="dropDownSelect1"></div>
+
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='vendor/animsition/js/animsition.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='vendor/bootstrap/js/popper.js') }}"></script>
+	<script src="{{ url_for('static',filename='vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='vendor/select2/select2.min.js') }}"></script>
+	<script>
+		$(".selection-2").select2({
+			minimumResultsForSearch: 20,
+			dropdownParent: $('#dropDownSelect1')
+		});
+	</script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='vendor/daterangepicker/moment.min.js') }}"></script>
+	<script src="{{ url_for('static',filename='vendor/daterangepicker/daterangepicker.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='vendor/countdowntime/countdowntime.js') }}"></script>
+<!--===============================================================================================-->
+	<script src="{{ url_for('static',filename='js/main.js') }}"></script>
+	<!-- include sweetAlert plugin -->
+	<script src="{{ url_for('static',filename='js/sweetalert2.all.js') }}"></script>
+	<script type="text/javascript">
+		$(function () {
+	        $("button#predict").click(function(e){
+	        	e.preventDefault();
+	        	/*Get for variabes*/
+	        	var mileage = $("#s_length").val(), year_model = $("#s_width").val(), mark = $("#p_length").val();
+	        	var fiscal_power = $("#p_width").val();
+	        	/*create the JSON object*/
+	        	var data = {"s_length":s_length, "s_width":s_width, "p_length":p_length, "p_width":p_width}
+	        	/*send the ajax request*/
+	        	$.ajax({
+	        		method : "POST",
+	        		url : window.location.href + 'api',
+	        		data : $('form').serialize(),
+	        		success : function(result){
+	        			var json_result = JSON.parse(result);
+	        			var price = json_result['price'];
+	        			swal('The flower is '+price+' DH', '','success')
+	        		},
+	        		error : function(){
+	        			console.log("error")
+	        		}
+	        	})
+	        })
+
+		});
+	</script>
+</body>
+</html>
