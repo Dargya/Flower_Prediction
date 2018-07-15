@@ -2,6 +2,7 @@ import pickle
 from flask import Flask, request, render_template
 import numpy as np
 import sys
+import os
 import waitress
 
 with open('ranfor.pkl', 'rb') as model_file:
@@ -28,5 +29,5 @@ def iris_prediction():
 
 
 if __name__ == '__main__':
-    waitress.serve(host='0.0.0.0', port=5000, app=app)  # pass the default port to waitress
+    waitress.serve(host='0.0.0.0', port=os.environ('PORT', 5000), app=app)  # pass the default port to waitress
     # app.run(debug=True)
