@@ -4,7 +4,7 @@ import numpy as np
 import sys
 import waitress
 
-with open('/Users/shubh/Desktop/Deploy_ML/ranfor.pkl', 'rb') as model_file:
+with open('ranfor.pkl', 'rb') as model_file:
     model = pickle.load(model_file)
 
 prediction_categories = {0: 'Iris Setosa', 1: 'Iris Virginica', 2: 'Iris Versicolor'}
