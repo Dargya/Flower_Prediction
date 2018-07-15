@@ -12,7 +12,7 @@ prediction_categories = {0: 'Iris Setosa', 1: 'Iris Virginica', 2: 'Iris Versico
 
 app = Flask(__name__)
 
-@app.route('/predict', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def iris_prediction():
     if request.method == 'GET':
         return render_template('random.html')
