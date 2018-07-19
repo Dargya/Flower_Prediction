@@ -24,5 +24,5 @@ print(accuracy_score(predictions, y_test))
 # Picking the model
 
 import pickle
-with open('/Users/shubh/Desktop/Deploy_ML/ranfor.pkl','wb') as model_pkl:
+with open('ranfor.pkl','wb') as model_pkl:
     pickle.dump(ran_clf,model_pkl)

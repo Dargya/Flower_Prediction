@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Project</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/random1.css') }}">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -27,25 +28,48 @@
     </script>
   </head>
   <body>
-    <div class="container">
+
+
+
+    <div class="container" align = 'center'>
       <div class="jumbotron">
-        <h1>Welcome to Flower Identification Project</h1>
+        <h2>Welcome to Flower Identification Project</h2>
         <p>Enter the parameters below!</p>
       </div>
     </div>
 
-    <div class="container">
+    <div class="column">
+    <img id="setosa" src="https://www.outsidepride.com/images/products/detail/gardenflower/irisnana.jpg" alt="" height="242" width="242">
+    <p></p>
+    <p></p>
+    <p></p>
+    <em><h3>Setosa</h3></em>
+  </div>
+    <div class="column">
+
+
       <form class="form-group" id="predictionForm" method="post" action="#">
         <label for="sepal_length">Sepal_length:</label>
-        <input type="text" class="form-control" name="s_length" placeholder="value">
+        <input type="text" class="form-control" name="s_length" placeholder="cm">
         <label for="sepal_length">Sepal_Width:</label>
-        <input type="text" class="form-control" name="s_width" placeholder="value">
+        <input type="text" class="form-control" name="s_width" placeholder="cm">
         <label for="petal_length">Petal_length:</label>
-        <input type="text" class="form-control" name="p_length" placeholder="value">
+        <input type="text" class="form-control" name="p_length" placeholder="cm">
         <label for="petal_width">Petal_Width:</label>
-        <input type="text" class="form-control" name="p_width" placeholder="value">
+        <input type="text" class="form-control" name="p_width" placeholder="cm">
         <p></p>
         <button type="submit" class="btn btn-default" name="button">Submit</button>
+      </form>
+
+      <img id="virginica" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Iris_virginica.jpg/1024px-Iris_virginica.jpg" alt="" height="242" width="242" >
+      <em><h3 id="virgiName">Verginica</h3></em>
+
+    </div>
+         <img id="versi" src="https://www.watersidenursery.co.uk/shop/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/i/r/irisversicolormysteriousmon-lge_1.jpg" alt="" height="242" width="242">
+         <em><h3 id="versiName">Versicolor</h3></em>
+      <div class="column">
+        <p></p>
       </div>
-    </form>
+
+
 </html>

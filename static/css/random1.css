@@ -1,0 +1,33 @@
+
+.column{
+  float: left;
+  margin: 0 1.5%;
+  width: 30%;
+}
+
+#setosa{
+  margin-left: 230px;
+  margin-top: 20px;
+}
+
+h3{
+    margin-left: 230px;
+    color: '#111F3C';
+}
+#versi{
+  margin-right: 200px;
+  margin-top: 20px;
+}
+#versiName{
+  margin-right: 200px;
+  color: '#111F3C';
+}
+
+#virginica{
+  margin-left: 115px;
+}
+
+#virgiName{
+  margin-left: 115px;
+  color: '#111F3C';
+}
